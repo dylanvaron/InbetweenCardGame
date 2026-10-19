@@ -114,14 +114,14 @@ public class Game {
                     updateDisplay("The third card is not inbetween the other two cards. You lose.");
                     doSleep(3000);
                 }
-
-                card1 = null;
-                card2 = null;
-                card3 = null;
-
             }
-
+            card1 = null;
+            card2 = null;
+            card3 = null;
         }
+
+        updateDisplay("You have run out of tokens. You have lost the game. You lasted for " + handCount + " hands.");
+        doSleep(3000);
 
         
         input.close();
