@@ -15,6 +15,10 @@ public class Card {
         return suit;
     }
 
+    public boolean equals(Card other) {
+        return (rank == other.getRank()) && (suit.equals(other.getSuit()));
+    }
+
     public String toString() {
         String returningRank = "";
         if(rank == 11) {
@@ -33,6 +37,6 @@ public class Card {
             returningRank += rank;
         }
 
-        return returningRank + " of " + suit + "s";
+        return returningRank + " of " + suit;
     }
 }
