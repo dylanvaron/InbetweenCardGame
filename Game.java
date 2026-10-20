@@ -78,18 +78,21 @@ public class Game {
             }
             else {
                 updateDisplay("");
-                doSleep(2500);
+                doSleep(1000);
                 
-                card3 = deck.dealCard();
-                updateDisplay("");
-                doSleep(2000);
+                
 
                 //let player double bet
-                String response = "";
+                String response;
+                if(input.hasNextLine()) {
+                    input.nextLine();
+                }
+
                 while(true) {
                     updateDisplay("Would you like to double your bet? Type 'yes' or 'no'");
-                    response = input.nextLine().toLowerCase();
-                    if(!(response.equals("yes") || response.equals("no"))) {
+                    response = input.nextLine();
+                    response = response.toLowerCase();
+                    if((response.equals("yes") || response.equals("no"))) {
                         break;
                     }
                     else {
@@ -103,7 +106,10 @@ public class Game {
                     player.bet(temp);
                 }
 
-
+                card3 = deck.dealCard();
+                updateDisplay("");
+                doSleep(2000);
+                
                 //if inbetween
                 if((card1.getRank() < card3.getRank() && card3.getRank() < card2.getRank()) || (card2.getRank() < card3.getRank() && card3.getRank() < card1.getRank())) {
                     updateDisplay("The third card is inbetween the other two cards. You win!");
@@ -118,6 +124,11 @@ public class Game {
             card1 = null;
             card2 = null;
             card3 = null;
+
+            if(deck.getNumCards() > 10) {
+                deck = new Deck();
+                deck.shuffle();
+            }
         }
 
         updateDisplay("You have run out of tokens. You have lost the game. You lasted for " + handCount + " hands.");

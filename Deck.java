@@ -31,8 +31,8 @@ public class Deck {
             shuffledDeck.add(tempCard);
         }
 
-    deck = shuffledDeck;
-}
+        deck = shuffledDeck;
+    }
 
     public Card dealCard() {
         return deck.remove(0);
