@@ -125,7 +125,7 @@ public class Game {
             card2 = null;
             card3 = null;
 
-            if(deck.getNumCards() > 10) {
+            if(deck.getNumCards() < 10) {
                 deck = new Deck();
                 deck.shuffle();
             }
